@@ -15,4 +15,61 @@
 - Simulate and Debug: Set up a simulation environment and run your kernels on your GPU implementation. Debug any issues that arise and optimize your design as needed.
 - Document and Share: Thoroughly document your project, including the architecture, ISA, and any relevant implementation details. Consider sharing your work with the community, as the tiny-gpu project did, to contribute to educational resources and open-source hardware development.
 
-  #### LESSS GOOO!
+## Basic Architecture
+
+
+### GPU:
+Stuff need to design
+
+Device control register -> Stores the thread count (no. of thread needed to launch kernel)
+
+Dispatcher for DCR -> Manages distribution of threads
+
+Compute cores
+
+Memory Controller -> Manages communicatio between cores and memory of the system
+
+Cache -> recently accessed Data
+
+
+Global Memory: External memory divided into data memory (8-bit addressable, 8-bit data)
+
+Program memory: (8-bit addressable, 16-bit instructions)
+
+Core:
+
+Scheduler: Manages execution of instructions for a block of threads
+Fetcher: Fetches instructions from program memory
+Decoder: Decodes instructions into control signals
+Register Files: Dedicated register files for each thread
+ALUs: Arithmetic-Logic Units for performing computations
+LSUs: Load-Store Units for accessing global data memory
+PCs: Program Counters for tracking execution flow of each thread
+
+
+### CPU Design
+
+- Instruction Memory
+The instruction memory will hold the address from the program counter and immediate values.
+
+- Registers
+A, B - Contain necessary data that needs to be loaded
+C - will contain the data that will recieve data from the ALU
+
+- ALU
+The ALU was required to perform arithmetic, logical or shift operation based on the opcode recieved. Individual units were first designed followed by the top model.
+
+- Data Memory
+This unit was mainly used to store the data or immediate value for the registers.
+
+- Program Counter
+This unit holds the address of the next instruction to be executed.
+
+- Controller
+This unit incorporates all the units using port mapping technique.
+
+- CPU
+Design of the 16/whatever i choose to be cpu.
+
+- Encoder
+Converts info to binary
