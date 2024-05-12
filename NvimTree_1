@@ -1,0 +1,15 @@
+~/Desktop/veritiny/..
+  .git
+   ★ 1
+  󰍛 ALU.sv
+  󰍛 basics.sv
+  󰍛 Cont.sv
+  󰍛 CPU.sv
+  󰍛 DataMem.sv
+  󰍛 Enc.sv
+  󰍛 IntMem.sv
+   ★ NvimTree_1
+   README.md
+  󰍛 Reg.sv
+  󰍛 ★ RegB.sv
+  󰍛 ★ RegC.sv

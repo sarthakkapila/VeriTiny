@@ -73,3 +73,10 @@ Design of the 16/whatever i choose to be cpu.
 
 - Encoder
 Converts info to binary
+
+
+## Side notes/info
+
+- Clock is the like a calibration system so that the whole system is in a synchronization and to reduce errors etc.
+
+- CPU bit width 16 means it can handle 16 bits at a time
