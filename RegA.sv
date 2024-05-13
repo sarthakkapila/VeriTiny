@@ -1,17 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
-///                 	        Program to realise Register A                           ///
+///                 	        Program to realize Register A                           ///
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 module regA #(
-    parameter DATA_WIDTH = 32
+    parameter DATA_WIDTH = 32,
     parameter NUM_PORTS = 2
 ) (
     input clk,
     input reset,
     input load_a,
     input [DATA_WIDTH-1:0] data_in_a,
-    output [DATA_WIDTH-1:0] data_out_a1
-    output [DATA_WIDTH-1:0] data_out_a2
+    output wire [DATA_WIDTH-1:0] data_out_a1,
+    output wire [DATA_WIDTH-1:0] data_out_a2
 );
 
 reg [DATA_WIDTH-1:0] reg_a, pipeline_reg_a1, pipeline_reg_a2;
@@ -27,7 +27,7 @@ always @(posedge clk) begin
         pipeline_reg_a1_parallel <= 0;
         pipeline_reg_a2_parallel <= 0;
     end else begin
-        if (load_a) begin
+        if (load_a == 1) begin
             reg_a <= data_in_a;
             pipeline_reg_a1 <= data_in_a;
             pipeline_reg_a2 <= pipeline_reg_a1;
@@ -43,8 +43,8 @@ always @(posedge clk) begin
     end
 end
 
-assign data_out_a = pipeline_reg_a2;
-assign data_out_a = pipeline_reg_a2_parallel;
+assign data_out_a1 = pipeline_reg_a2;
+assign data_out_a2 = pipeline_reg_a2_parallel;
 
 endmodule
 
