@@ -1,32 +1,26 @@
 # VeriTiny
+
+My aim is to make a chip specially designed for AI.
+
 ## Basic Architecture
 
 ### CPU Design
 
-- Instruction Memory
-The instruction memory will hold the address from the program counter and immediate values.
+- Core Design
 
-- Registers
-A, B - Contain necessary data that needs to be loaded
-C - will contain the data that will recieve data from the ALU
+A single core of the cpu has the following components:
 
-- ALU
-The ALU was required to perform arithmetic, logical or shift operation based on the opcode recieved. Individual units were first designed followed by the top model.
-
-- Data Memory
-This unit was mainly used to store the data or immediate value for the registers.
-
-- Program Counter
-This unit holds the address of the next instruction to be executed.
-
-- Controller
-This unit incorporates all the units using port mapping technique.
-
-- CPU
-Design of the 16/whatever i choose to be cpu.
-
-- Encoder
-Converts info to binary
+Arithmetic Logic Unit (ALU): Implements arithmetic and logical operations.
+Registers: Stores operands, intermediate results, and control information.
+Control Unit (CU): Coordinates instruction execution and generates control signals.
+Decoder: Decodes instructions and generates control signals for execution.
+Encodes: Encodes
+Buses: Connects functional units and manages data flow within the core.
+Interfaces: Interfaces for accessing instruction and data memory.
+Pipeline: If using a pipelined architecture, implement stages such as fetch, decode, execute, memory access, and write-back.
+Cache: Stores recently fetched instructions & data.
+Microcode ROM: Stores microcode instructions for complex instructions.
+Power Management Unit: Controls power consumption based on system activity.
 
 
 ## Side notes/info
