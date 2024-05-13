@@ -2,41 +2,36 @@
 // This describes the ALU of the design ////
 ////////////////////////////////////////////////////////////////////
 
-module alu( a, b, opcode, mode, outalu, za, zb, eq, gt, lt);
-input [31:0] a;
-input [31:0] b;
-input [3:0] opcode;
-input mode;
-output [63:0] outalu;
-output za, zb, eq, gt, lt;
 
-reg [63:0] outalu;
-reg za, zb, eq, gt, lt;
+module alu (
 
-wire [63:0] outau;
-wire [63:0] outlu;
-wire tza, tzb, teq, tgt, tlt;
+    input wire [63:0] A,
+    input wire [63:0] B,
+    input wire [2:0] opcode,
+    output reg [63:0] C,
 
-arith a1 (.a(a), .b(b), .opcode(opcode), .outau(outau));
-logic l1 (.a(a), .b(b), .opcode(opcode), .outlu(outlu), .za(tza), .zb(tzb), .eq(teq), .gt(tgt), .lt(tlt));
+    output reg fZ,       // zero flag
+    output reg fC,       // carry flag
+    output reg fN,       // negative flag
+    output reg fV,       // overflow flag
+    );
+    always @(*) begin
+        case (opcode)
+        4'b0000: result = A + B;         // ADD
+        4'b0001: result = A - B;         // SUB
+        4'b0010: result = A * B;         // MUL
+        4'b0011: result = A / B;         // DIV
+        default: result = 64'hx;         // Undefined (default)
+    endcase
 
-always@(a,b,mode,opcode)
-begin
-	if(mode == 0) begin
-	outalu = outau;
-	end
-	else if (mode == 1) begin
-	outalu = outlu;
-	end
-	else begin
-	outalu = 64'h00000000;
-	end
+    fZ = (result == 0);
 
-	za = tza;
-	zb = tzb;
-	eq = teq;
-	gt = tgt;
-	lt = tlt;
+    fC = (result < A) || (result < B);
+
+    fN = result[63];
+
+    fV = ((A[63] == B[63]) && (result[63] != A[63])) ||
+         ((A[63] != B[63]) && (result[63] == A[63]));
+
 end
-
 endmodule
