@@ -1,6 +1,11 @@
 # VeriTiny
 
-My aim is to make a chip specially designed for AI.
+A minimal CPU implementation in Verilog, aimed at highlighting the general principles of all these architectures.
+
+
+> [!IMPORTANT]
+> The project is still under construction.
+> Learning all the core concepts as I code.
 
 ## Basic Architecture
 
@@ -23,10 +28,3 @@ Microcode ROM: Stores microcode instructions for complex instructions.
 Power Management Unit: Controls power consumption based on system activity.
 
 
-## Side notes/info
-
-- Clock is the like a calibration system so that the whole system is in a synchronization and to reduce errors etc.
-
-- CPU bit width 16 means it can handle 16 bits at a time
-
-#### Soon add GPU as well started with CPU as its comparitively easier!
