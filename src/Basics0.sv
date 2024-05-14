@@ -4,7 +4,6 @@
 //                                    //
 ////////////////////////////////////////
 
-
 // Declares a module, modueles are like building blocks for sv designs
 module HiMom (clk, loadA, dataA, dataAout)
 module HelloWorld;
@@ -33,4 +32,3 @@ endmodule
 
 input [3:0] write_reg, // Represents a port named write_reg wit ha 4-bit bus means value from 0 to 15(2^-4 - 1)
 input [31:0] write_data, // Represents a port anmed write_data with a 32-bit bus means vlaues from 0 to 2^32 - 1
-

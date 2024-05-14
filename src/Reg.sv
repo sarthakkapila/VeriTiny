@@ -1,26 +1,24 @@
-////////////////////////////////////////`
-//          64-bit register           //
-///////////////////////////////////////
-`
+////////////////////////////////////////////////////////`
+//                  64-bit register                  //
+//////////////////////////////////////////////////////
 
 module Reg(
     input wire reset,
     input wire enable,
-    input reg [63:0] in,
-    input reg [63:0] out,
-    );
+    input wire [63:0] in,
+    output reg [63:0] out
+);
 
-    always @(*) begin
+    always @* begin
         if (reset)
             out <= 64'hx;
         else if (enable)
-            out <= enable;
-        else
-            out <= out;
+            out <= in;
     end
-initial begin
-   $dumpfile("dump.vcd");
-   $dumpvars;
-end
+
+    initial begin
+       $dumpfile("dump.vcd");
+       $dumpvars;
+    end
 
 endmodule

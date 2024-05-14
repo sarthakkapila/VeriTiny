@@ -13,7 +13,7 @@ A minimal CPU implementation in Verilog, aimed at highlighting the general princ
 
 - Core Design
 
-A single core of the cpu has the following components:
+### A single core of the cpu has the following components:
 
 - Arithmetic Logic Unit (ALU): Implements arithmetic and logical operations.
 - Registers: Stores operands, intermediate results, and control information.
