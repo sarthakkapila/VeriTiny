@@ -17,21 +17,26 @@ module alu (
     );
     always @(*) begin
         case (opcode)
-        4'b0000: result = A + B;         // ADD
-        4'b0001: result = A - B;         // SUB
-        4'b0010: result = A * B;         // MUL
-        4'b0011: result = A / B;         // DIV
-        default: result = 64'hx;         // Undefined (default)
+        4'b0000: C = A + B;         // ADD
+        4'b0001: C = A - B;         // SUB
+        4'b0010: C = A * B;         // MUL
+        4'b0011: C = A / B;         // DIV
+        default: C = 64'hx;         // Undefined (default)
     endcase
 
-    fZ = (result == 0);
+      fZ = (C == 0);
 
-    fC = (result < A) || (result < B);
+      fC = (C < A) || (C < B);
 
-    fN = result[63];
+    fN = C[63];
 
-    fV = ((A[63] == B[63]) && (result[63] != A[63])) ||
-         ((A[63] != B[63]) && (result[63] == A[63]));
+      fV = ((A[63] == B[63]) && (C[63] != A[63])) ||
+      ((A[63] != B[63]) && (C[63] == A[63]));
 
 end
+initial begin
+   $dumpfile("dump.vcd");
+   $dumpvars;
+end
+
 endmodule
